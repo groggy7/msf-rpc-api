@@ -14,11 +14,11 @@ type Metasploit struct {
 	Token string
 }
 
-func InitMsf() *Metasploit {
+func InitMsf(url, username, pass string) *Metasploit {
 	return &Metasploit{
-		Host: "http://192.168.24.128:55552/api",
-		User: "msf",
-		Pass: "VZ6lWr8n",
+		Host: url,
+		User: username,
+		Pass: pass,
 	}
 }
 

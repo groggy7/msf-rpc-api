@@ -84,12 +84,11 @@ type RemoveTokenResponse struct {
 	ErrorMessage string `msgpack:"error_message"`
 }
 
-// tested
 func (msf *Metasploit) Login() (*LoginResponse, error) {
 	req := &LoginRequest{
 		Method:   "auth.login",
-		Username: "msf",
-		Password: "VZ6lWr8n",
+		Username: msf.User,
+		Password: msf.Pass,
 	}
 
 	var res LoginResponse
@@ -101,7 +100,6 @@ func (msf *Metasploit) Login() (*LoginResponse, error) {
 	return &res, nil
 }
 
-// tested
 func (msf *Metasploit) Logout() (*LogoutResponse, error) {
 	req := &LogoutRequest{
 		Method:      "auth.logout",
@@ -117,7 +115,6 @@ func (msf *Metasploit) Logout() (*LogoutResponse, error) {
 	return &res, nil
 }
 
-// not tested
 func (msf *Metasploit) AddToken(token string) (*AddTokenResponse, error) {
 	req := &AddTokenRequest{
 		Method:   "auth.token_add",
@@ -133,7 +130,6 @@ func (msf *Metasploit) AddToken(token string) (*AddTokenResponse, error) {
 	return &res, nil
 }
 
-// not tested
 func (msf *Metasploit) GenerateToken() (*GenerateTokenResponse, error) {
 	req := &GenerateTokenRequest{
 		Method: "auth.token_generate",
@@ -148,7 +144,6 @@ func (msf *Metasploit) GenerateToken() (*GenerateTokenResponse, error) {
 	return &res, nil
 }
 
-// tested
 func (msf *Metasploit) GetTokens() (*GetTokenListResponse, error) {
 	req := &GetTokenListRequest{
 		Method: "auth.token_list",
@@ -163,7 +158,6 @@ func (msf *Metasploit) GetTokens() (*GetTokenListResponse, error) {
 	return &res, nil
 }
 
-// tested
 func (msf *Metasploit) RemoveToken(token string) (*RemoveTokenResponse, error) {
 	req := RemoveTokenRequest{
 		Method:           "auth.token_remove",

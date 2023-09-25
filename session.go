@@ -227,6 +227,7 @@ func (msf *Metasploit) SessionRead(session uint32, readPointer uint32) (string, 
 
 	return res.Data, nil
 }
+
 func (msf *Metasploit) SessionExecute(session uint32, command string) (string, error) {
 	readPointer, err := msf.SessionReadPointer(session)
 	if err != nil {
