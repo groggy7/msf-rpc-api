@@ -63,7 +63,7 @@ type ConsoleReadRequest struct {
 type ConsoleReadResponse struct {
 	Data   string `msgpack:"data"`
 	Prompt string `msgpack:"prompt"`
-	Busy   string `msgpack:"busy"`
+	Busy   bool   `msgpack:"busy"`
 }
 
 type ConsoleSessionDetachRequest struct {

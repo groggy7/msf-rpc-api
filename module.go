@@ -268,7 +268,6 @@ func (msf *Metasploit) ModuleCompatibleSessions(moduleName string) (*ModuleCompa
 	return &res, nil
 }
 
-// not tested
 func (msf *Metasploit) ModuleEncode(data, encoderModule string, encoderOptions map[string]string) (*ModuleEncodeResponse, error) {
 	req := &ModuleEncodeRequest{
 		Method:         "module.encode",
