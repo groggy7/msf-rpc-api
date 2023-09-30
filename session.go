@@ -166,7 +166,7 @@ type SessionRingPutResponse struct {
 	WriteCount uint32 `msgpack:"write_count"`
 }
 
-func (msf *Metasploit) SessionList() (SessionListResponse, error) {
+func (msf *Metasploit) SessionList() (*SessionListResponse, error) {
 	req := &SessionListRequest{
 		Method: "session.list",
 		Token:  msf.Token,
@@ -177,7 +177,7 @@ func (msf *Metasploit) SessionList() (SessionListResponse, error) {
 		return nil, err
 	}
 
-	return res, nil
+	return &res, nil
 
 }
 
