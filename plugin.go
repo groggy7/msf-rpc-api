@@ -19,7 +19,7 @@ type PluginUnLoadRequest struct {
 	PluginName string
 }
 
-type PluginUnloadRequest struct {
+type PluginUnloadResponse struct {
 	Result string `msgpack:"result"`
 }
 
@@ -49,14 +49,14 @@ func (msf *Metasploit) PluginLoad(pluginName string, pluginOptions map[string]st
 	return &res, nil
 }
 
-func (msf *Metasploit) PluginUnload(pluginName string) (*PluginUnloadRequest, error) {
+func (msf *Metasploit) PluginUnload(pluginName string) (*PluginUnloadResponse, error) {
 	ctx := &PluginUnLoadRequest{
 		Method:     "plugin.unload",
 		Token:      msf.Token,
 		PluginName: pluginName,
 	}
 
-	var res PluginUnloadRequest
+	var res PluginUnloadResponse
 	if err := msf.SendRequest(ctx, &res); err != nil {
 		return nil, err
 	}
