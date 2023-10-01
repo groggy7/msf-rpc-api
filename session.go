@@ -196,7 +196,7 @@ func (msf *Metasploit) SessionReadPointer(session uint32) (uint32, error) {
 	return sesRingLast.Seq, nil
 }
 
-func (msf *Metasploit) SessionWrite(session uint32, command string) error {
+func (msf *Metasploit) SessionWrite(session uint32, command string) (string, error) {
 	ctx := &SessionWriteRequest{
 		Method:    "session.shell_write",
 		Token:     msf.Token,
@@ -206,10 +206,10 @@ func (msf *Metasploit) SessionWrite(session uint32, command string) error {
 
 	var res SessionWriteResponse
 	if err := msf.SendRequest(ctx, &res); err != nil {
-		return err
+		return "", err
 	}
 
-	return nil
+	return res.WriteCount, nil
 }
 
 func (msf *Metasploit) SessionRead(session uint32, readPointer uint32) (string, error) {
